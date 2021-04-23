@@ -48,4 +48,4 @@ echo "=============================================="
 echo "=============================================="
 
 echo ">>> Deploy the app to S3"
-aws s3 cp lib/build s3://docker-study.shams-nahid.com/ --recursive
+aws s3 cp lib/build s3://k8s-study.shams-nahid.com/ --recursive
