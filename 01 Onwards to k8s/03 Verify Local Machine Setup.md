@@ -1,4 +1,4 @@
-### Run Image in k8s Cluster
+### Verify Local Machine Setup
 
 ---
 
@@ -21,8 +21,3 @@ kubectl cluster-info
 We should see the cluster is running.
 
 For any error/warning please check the installation section.
-
-Apart from `docker-compose` we need to consider,
-
-- `k8s` expect all the containers image already be built
-- In `k8s cluster` we have to manually do the networking
