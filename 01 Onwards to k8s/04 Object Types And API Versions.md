@@ -13,15 +13,15 @@ Our `client-pod.yml` should be like the following,
 apiVersion: v1
 kind: Pod
 metadata:
-  name: client-pod
+  name: proxy-pod
   labels:
     component: web
 spec:
   containers:
-    - name: client
-      image: stephengrider/multi-client
+    - name: nginx-proxy
+      image: nginx
       ports:
-        - containerPort: 3000
+        - containerPort: 80
 ```
 
 And our `client-node-port.yml` should be like the following,
@@ -30,13 +30,13 @@ And our `client-node-port.yml` should be like the following,
 apiVersion: v1
 kind: Service
 metadata:
-  name: client-node-port
+  name: proxy-node-port
 spec:
   type: NodePort
   ports:
     - port: 3050
-      targetPort: 3000
-      nodePort: 31515
+      targetPort: 80
+      nodePort: 31516
   selector:
     component: web
 ```
