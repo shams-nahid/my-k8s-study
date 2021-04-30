@@ -8,3 +8,5 @@ When it comes to ingress service in k8s, there are two options we have to consid
 2. [ingress-nginx](https://github.com/kubernetes/ingress-nginx): A community driven project.
 
 Difference between them are discussed [here](https://github.com/nginxinc/kubernetes-ingress/blob/master/docs/nginx-ingress-controllers.md).
+
+When it comes to set up `ingress-nginx`, it varies for different cloud provider.
