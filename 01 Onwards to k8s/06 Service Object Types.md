@@ -4,9 +4,9 @@
 
 `Service` is all about setting up networking in the `k8s cluster`. `Service` types have 4 sub-types,
 
-- ClusterIP
 - NodePort
-- LoadBalance
+- ClusterIP
+- LoadBalancer
 - Ingress
 
 We define the sub-types under the `spec` property.
@@ -37,6 +37,10 @@ It has 2 types of port,
 2. **targetPort**: The `ClientIP Service` is pointing to the container with this `targetPort`.
 
 **\*\*** Diagram of port mapping of theses 3 ports by local machine, cluster, container, other objects
+
+<u>**Load Balancer**</u>
+
+This is an older way to handle traffic from outside to k8s cluster. With `Load Balance Service`, we replace the `ClusterIp Service` with it. And the k8s reach to the cloud provider to get there built in load balancer (For example, in AWS, it could be Classic Load Balancer or Application Load Balancer). When we use `Load Balancer Service`, it only allows the k8s cluster to expose only a set of specific Pods. The limitations are, it can not expose multiple set of pods.
 
 <u>**Ingress Service**</u>
 
