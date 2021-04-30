@@ -70,6 +70,7 @@ Each `apiVersion` has a set of object types. For example, when the `apiVersion` 
 - Event
 - Namespace
 - Pod
+- PersistentVolumeClaim
 
 Instead, if the `apiVersion` is `apps/v1`, we can use `objectTypes` or `kind` as,
 
@@ -77,3 +78,13 @@ Instead, if the `apiVersion` is `apps/v1`, we can use `objectTypes` or `kind` as
 - StatefulSet
 
 > Each API version has different set of objects type. So before we using any object types, we have to check the api Version and specify on the top of the `yml` file.
+
+### Persistent Volume Access Modes
+
+---
+
+In k8s there are 3 types of access modes for the persistent volumes,
+
+1. **ReadWriteOnce**: Only one node is allowed to do read/write operation in the volume.
+2. **ReadOnlyMany**: Multiple nodes can read from the volume at the same time.
+3. **ReadWriteMany**: Multiple nodes can perform both operation, read and write to the volume at the same time.
