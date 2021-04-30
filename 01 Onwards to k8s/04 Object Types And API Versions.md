@@ -71,6 +71,7 @@ Each `apiVersion` has a set of object types. For example, when the `apiVersion` 
 - Namespace
 - Pod
 - PersistentVolumeClaim
+- Secrets
 
 Instead, if the `apiVersion` is `apps/v1`, we can use `objectTypes` or `kind` as,
 
@@ -88,3 +89,35 @@ In k8s there are 3 types of access modes for the persistent volumes,
 1. **ReadWriteOnce**: Only one node is allowed to do read/write operation in the volume.
 2. **ReadOnlyMany**: Multiple nodes can read from the volume at the same time.
 3. **ReadWriteMany**: Multiple nodes can perform both operation, read and write to the volume at the same time.
+
+### Allocating Persistent Volume
+
+---
+
+When we ask k8s for persistent volume, it reaches for some storage class. In local machine, the default storage class is a slice of the hard disk. This is a reason, we do not need to specify the storage class in local machine. We can see the list of storage class,
+
+```bash
+kubectl get storageclass
+```
+
+We can get details of the storage class by,
+
+```bash
+kubectl describe storageclass
+```
+
+When we run the k8s in cloud, then we have tons of options for storage class. For example, we can use `AWS EBS`, `Google Cloud Persistence Disk`, `Azure File`, `Azure Disk` etc. For each cloud provider, a default storage class is automatically configured.
+
+We can see the list of persistence volumes,
+
+```bash
+kubectl get pv
+```
+
+To see the persistent volume claims,
+
+```bash
+kubectl get pvc
+```
+
+This `PVC` list is showing, we can use these persistence volume. And the `PV` list is the actual use cases of these volumes.
