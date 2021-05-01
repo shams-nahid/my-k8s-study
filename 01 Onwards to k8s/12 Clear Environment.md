@@ -64,3 +64,9 @@ kubectl delete service service_object_name
 As output, we should see `service.apps "service_object_name" deleted`.
 
 > In the service list, there should be a service object named `kubernetes` and it is internally used by `kubernetes` itself. We should not delete or mess with this service.
+
+To remove the whole cluster,
+
+```bash
+minikube delete
+```
