@@ -25,8 +25,17 @@ So the bottom line is, we can summarize the answer
 
 - What is k8s?
 
-> A system to run multiple containers in multiple machines (nodes).
+> A container orchestrator make many servers act like one. Kubernetes is one of the most popular container orchestrator.
 
 - Why we use k8s?
 
 > Deploy the containerized apps.
+
+<h3>SWARM And K8s</h3>
+
+---
+
+**SWARM**
+
+- +Single vendor container platform, comes with docker
+- +Easiest orchestrator
