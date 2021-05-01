@@ -30,13 +30,3 @@ So the bottom line is, we can summarize the answer
 - Why we use k8s?
 
 > Deploy the containerized apps.
-
-<h3>SWARM And K8s</h3>
-
----
-
-**SWARM**
-
-- +Single vendor container platform, comes with docker
-- +Easiest orchestrator
--
