@@ -39,3 +39,4 @@ So the bottom line is, we can summarize the answer
 
 - +Single vendor container platform, comes with docker
 - +Easiest orchestrator
+-
