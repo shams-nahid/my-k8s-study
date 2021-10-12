@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Shams Nahid">
+        <link rel="canonical" href="http://k8s-study.shams-nahid.com/Notes/03 Multi Container App/04 Data Persistant/">
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>04 Data Persistant - Advance JS Study Notes</title>
+        <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link href="../../../css/extra.css" rel="stylesheet">
+
+        <script src="../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../../..">Advance JS Study Notes</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../../..">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Notes <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">01 Onwards to k8s</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../01 Onwards to k8s/01 Why k8s/">01 Why k8s</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/02 k8s Tools/">02 k8s Tools</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/03 Local Environment for k8s/">03 Local Environment for k8s</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/04 Verify Local Machine Setup/">04 Verify Local Machine Setup</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/05 Object Types And API Versions/">05 Object Types And API Versions</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/06 Pod Object Types/">06 Pod Object Types</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/07 Service Object Types/">07 Service Object Types</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/08 Ingress Service/">08 Ingress Service</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/09 Secret Object Types/">09 Secret Object Types</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/10 Run Containers Inside k8s/">10 Run Containers Inside k8s</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/11 k8s Development Flow/">11 k8s Development Flow</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/12 Imperative vs Declarative Deployments/">12 Imperative vs Declarative Deployments</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/13 Clear Environment/">13 Clear Environment</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/14 k8s in Production/">14 k8s in Production</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">02 Maintain Contianers</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../02 Maintain Contianers/01 Update Existing Objects/">01 Update Existing Objects</a>
+</li>
+            
+<li >
+    <a href="../../02 Maintain Contianers/02 Declarative Update/">02 Declarative Update</a>
+</li>
+            
+<li >
+    <a href="../../02 Maintain Contianers/03 Limitations of Updating Config Files/">03 Limitations of Updating Config Files</a>
+</li>
+            
+<li >
+    <a href="../../02 Maintain Contianers/04 Deployment Object Types/">04 Deployment Object Types</a>
+</li>
+            
+<li >
+    <a href="../../02 Maintain Contianers/05 Deployment Config File/">05 Deployment Config File</a>
+</li>
+            
+<li >
+    <a href="../../02 Maintain Contianers/06 Apply Deployment/">06 Apply Deployment</a>
+</li>
+            
+<li >
+    <a href="../../02 Maintain Contianers/07 Services Requirement/">07 Services Requirement</a>
+</li>
+            
+<li >
+    <a href="../../02 Maintain Contianers/08 Updating Deployments/">08 Updating Deployments</a>
+</li>
+            
+<li >
+    <a href="../../02 Maintain Contianers/09 Scaling Deployments/">09 Scaling Deployments</a>
+</li>
+            
+<li >
+    <a href="../../02 Maintain Contianers/10 Updating Deployment Image/">10 Updating Deployment Image</a>
+</li>
+            
+<li >
+    <a href="../../02 Maintain Contianers/11 Multi Docker Access/">11 Multi Docker Access</a>
+</li>
+            
+<li >
+    <a href="../../02 Maintain Contianers/12 Requirement of Access Virtual Machine Docker Server/">12 Requirement of Access Virtual Machine Docker Server</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">03 Multi Container App</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../- 01 Creating configurations/">  01 Creating configurations</a>
+</li>
+            
+<li >
+    <a href="../- 02 Applying Configurations/">  02 Applying Configurations</a>
+</li>
+            
+<li >
+    <a href="../01 App Architecture/">01 App Architecture</a>
+</li>
+            
+<li >
+    <a href="../02 Run Existing Application/">02 Run Existing Application</a>
+</li>
+            
+<li >
+    <a href="../03 Combining Config Files/">03 Combining Config Files</a>
+</li>
+            
+<li class="active">
+    <a href="./">04 Data Persistant</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">k8s Deployments</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../k8s Deployments/01 Deployment Process/">01 Deployment Process</a>
+</li>
+            
+<li >
+    <a href="../../k8s Deployments/02 GCP vs AWS for K8s/">02 GCP vs AWS for K8s</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">Resource</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Blogs</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Objects in K8s World</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../resource/blogs/Objects in K8s World/content/">Content</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Towards K8s</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../resource/blogs/Towards K8s/content/">Content</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Completed code</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Client</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../resource/completed-code/client/">Index</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../03 Combining Config Files/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../../k8s Deployments/01 Deployment Process/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/bmshamsnahid/my-k8s-study"><i class="fa fa-github"></i> GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#pvc">PVC</a></li>
+            <li><a href="#diagram-of-volume-single-volume-inside-pod-with-multiple-container-pointing-it">Diagram Of Volume: single volume inside pod with multiple container pointing it</a></li>
+            <li><a href="#diagram-of-persistent-volume-a-volume-outside-of-the-pod-pointing-multiple-container">Diagram of Persistent Volume: a volume outside of the Pod, pointing multiple container</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h3 id="pvc">PVC</h3>
+<hr />
+<p>When we crete a <code>Deployment</code> object with <code>Postgres</code> image, we create a <code>Pod</code> inside the virtual machine. The <code>Postgres Container</code> inside the <code>Pod</code> has a storage system, which is only accessible by the container itself. While the application running, <code>Postgres</code> used to store data in its container file system. Anytime the <code>Pod</code> crashed, the container along with its file system will be lost. So, after crashing a <code>Pod</code> with <code>Postgres</code>, if another <code>Pod</code> with <code>Container</code> get created, the new container can not access or represent the old crashed container data/files.</p>
+<p><code>PVC</code> stands for <code>persistent Volume Claims</code>. This <code>PVC</code> thing is very much similar to the docker worlds <code>volumes</code>. In docker, we used to persist volume by <code>Data Volume</code> and <code>Bind Mounting</code> to make sure using/mapping the host machine storage from the container.</p>
+<p>We can come up architecture, where the <code>Postgres</code> will use the file system of the host machine. So in case the <code>Pod</code> crashed, and new <code>Pod</code> came up, the data in the host machine will not be lost. Also the new <code>Pods Container</code> can access these data.</p>
+<ol>
+<li>
+<p><strong>Volume In K8s</strong>: In docker world, we consider <code>Volume</code> as a file system inside the host machine, used/mapped by the container. But in <code>k8s</code> world, the <code>Volume</code> is an object, used to store data in the <code>Pod</code> level. In <code>k8s</code> when we create a <code>Volume</code>, we are creating a file system inside the <code>Pod</code>. The storage can be expressed as <code>Belong To</code> or <code>Associated To</code> the <code>Pods</code>. This <code>Volume</code> can be accessed by any container inside the <code>Pod</code>. Since <code>Volume</code> is tied with the <code>Pods</code>, if <code>Pod</code> dies, terminated or recreated, for any reason, the <code>Volume</code> itself will be gone as well. So, in <code>k8s</code>, the <code>Volume</code> is not appropriate for storing database.</p>
+</li>
+<li>
+<p><strong>Persistent Volume</strong>: <code>Persistent Volume</code> is a long term durable storage, not tied to any <code>Pod</code> or <code>Container</code>. So, even a <code>Pod</code> or <code>Container</code> crashed, the data in the <code>Persisted Volume</code> survived.</p>
+</li>
+<li>
+<p><strong>Persistent Volume Claim</strong>: <code>Persistent Volume Claim</code> is an advertizement of k8s for <code>Statically provisioned persistent volume</code> and <code>Dynamically provisioned persistent volume</code>. <code>Statically provisioned persistent volume</code> are created by k8s ahead of time but <code>Dynamically provisioned persistent volume</code> are created on demand on the fly. From <code>Pods config file</code> we can ask any of these and k8s will ensure these volumes on behalf of us.</p>
+</li>
+</ol>
+<blockquote>
+<p>A <code>Volume</code> is tied to Pod and can not survived if the pod delete/recreated/crashed. On the other hand, the <code>Persistent Volume</code> survived even though the <code>Pod</code> can not survive. The <code>Persistent Volume</code> only lost, if the administrator removed it.</p>
+</blockquote>
+<h4 id="diagram-of-volume-single-volume-inside-pod-with-multiple-container-pointing-it">Diagram Of Volume: single volume inside pod with multiple container pointing it</h4>
+<h4 id="diagram-of-persistent-volume-a-volume-outside-of-the-pod-pointing-multiple-container">Diagram of Persistent Volume: a volume outside of the Pod, pointing multiple container</h4></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright &copy; 2021 <a href="https://shams-nahid.com/">Shams Nahid</a>.</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js" defer></script>
+        <script src="../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

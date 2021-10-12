@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Shams Nahid">
+        <link rel="canonical" href="http://k8s-study.shams-nahid.com/Notes/02 Maintain Contianers/11 Multi Docker Access/">
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>11 Multi Docker Access - Advance JS Study Notes</title>
+        <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link href="../../../css/extra.css" rel="stylesheet">
+
+        <script src="../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../../..">Advance JS Study Notes</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../../..">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Notes <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">01 Onwards to k8s</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../01 Onwards to k8s/01 Why k8s/">01 Why k8s</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/02 k8s Tools/">02 k8s Tools</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/03 Local Environment for k8s/">03 Local Environment for k8s</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/04 Verify Local Machine Setup/">04 Verify Local Machine Setup</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/05 Object Types And API Versions/">05 Object Types And API Versions</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/06 Pod Object Types/">06 Pod Object Types</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/07 Service Object Types/">07 Service Object Types</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/08 Ingress Service/">08 Ingress Service</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/09 Secret Object Types/">09 Secret Object Types</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/10 Run Containers Inside k8s/">10 Run Containers Inside k8s</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/11 k8s Development Flow/">11 k8s Development Flow</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/12 Imperative vs Declarative Deployments/">12 Imperative vs Declarative Deployments</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/13 Clear Environment/">13 Clear Environment</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/14 k8s in Production/">14 k8s in Production</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">02 Maintain Contianers</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../01 Update Existing Objects/">01 Update Existing Objects</a>
+</li>
+            
+<li >
+    <a href="../02 Declarative Update/">02 Declarative Update</a>
+</li>
+            
+<li >
+    <a href="../03 Limitations of Updating Config Files/">03 Limitations of Updating Config Files</a>
+</li>
+            
+<li >
+    <a href="../04 Deployment Object Types/">04 Deployment Object Types</a>
+</li>
+            
+<li >
+    <a href="../05 Deployment Config File/">05 Deployment Config File</a>
+</li>
+            
+<li >
+    <a href="../06 Apply Deployment/">06 Apply Deployment</a>
+</li>
+            
+<li >
+    <a href="../07 Services Requirement/">07 Services Requirement</a>
+</li>
+            
+<li >
+    <a href="../08 Updating Deployments/">08 Updating Deployments</a>
+</li>
+            
+<li >
+    <a href="../09 Scaling Deployments/">09 Scaling Deployments</a>
+</li>
+            
+<li >
+    <a href="../10 Updating Deployment Image/">10 Updating Deployment Image</a>
+</li>
+            
+<li class="active">
+    <a href="./">11 Multi Docker Access</a>
+</li>
+            
+<li >
+    <a href="../12 Requirement of Access Virtual Machine Docker Server/">12 Requirement of Access Virtual Machine Docker Server</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">03 Multi Container App</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../03 Multi Container App/- 01 Creating configurations/">  01 Creating configurations</a>
+</li>
+            
+<li >
+    <a href="../../03 Multi Container App/- 02 Applying Configurations/">  02 Applying Configurations</a>
+</li>
+            
+<li >
+    <a href="../../03 Multi Container App/01 App Architecture/">01 App Architecture</a>
+</li>
+            
+<li >
+    <a href="../../03 Multi Container App/02 Run Existing Application/">02 Run Existing Application</a>
+</li>
+            
+<li >
+    <a href="../../03 Multi Container App/03 Combining Config Files/">03 Combining Config Files</a>
+</li>
+            
+<li >
+    <a href="../../03 Multi Container App/04 Data Persistant/">04 Data Persistant</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">k8s Deployments</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../k8s Deployments/01 Deployment Process/">01 Deployment Process</a>
+</li>
+            
+<li >
+    <a href="../../k8s Deployments/02 GCP vs AWS for K8s/">02 GCP vs AWS for K8s</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">Resource</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Blogs</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Objects in K8s World</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../resource/blogs/Objects in K8s World/content/">Content</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Towards K8s</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../resource/blogs/Towards K8s/content/">Content</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Completed code</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Client</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../resource/completed-code/client/">Index</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../10 Updating Deployment Image/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../12 Requirement of Access Virtual Machine Docker Server/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/bmshamsnahid/my-k8s-study"><i class="fa fa-github"></i> GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#multi-docker-access">Multi Docker Access</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h3 id="multi-docker-access">Multi Docker Access</h3>
+<hr />
+<p>We have two docker installed</p>
+<ol>
+<li>Inside local machine</li>
+<li>Inside the virtual machine, created by minikube</li>
+</ol>
+<p>By default our <code>docker-client</code> access the local <code>docker-server</code>. If we want to access the <code>docker-server</code> of the <code>virtual machine</code>, created by <code>minikube</code>, we can run,</p>
+<pre><code class="bash">eval $(minikube docker-env)
+</code></pre>
+
+<p>From this terminal, we can access the <code>docker-server</code> of the virtual machine. This is not a permanent re-configuration.</p>
+<blockquote>
+<p>This <code>eval $(minikube docker-env)</code> is a temporary connection of the virtual machine docker from the current terminal window. As soon as we go back to old terminal or open a new terminal, these terminal will make interaction of the local machine docker server.</p>
+</blockquote>
+<p>Whenever we run the <code>eval $(minikube docker-env)</code>, it actually exports couple of environment variable. We can see these environment variables by,</p>
+<pre><code class="bash">minikube docker-env
+</code></pre>
+
+<p>This should export the variables, that helps the docker client to determine which server it is going to connect.</p>
+<p>This command output also includes,</p>
+<pre><code># To point your shell to minikube's docker-daemon, run:
+# eval $(minikube -p minikube docker-env)
+</code></pre>
+
+<p>The second comment can guide us to configure the terminal to connect docker client with the virtual machine docker server.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright &copy; 2021 <a href="https://shams-nahid.com/">Shams Nahid</a>.</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js" defer></script>
+        <script src="../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

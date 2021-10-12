@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Shams Nahid">
+        <link rel="canonical" href="http://k8s-study.shams-nahid.com/Notes/02 Maintain Contianers/10 Updating Deployment Image/">
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>10 Updating Deployment Image - Advance JS Study Notes</title>
+        <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link href="../../../css/extra.css" rel="stylesheet">
+
+        <script src="../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../../..">Advance JS Study Notes</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../../..">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Notes <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">01 Onwards to k8s</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../01 Onwards to k8s/01 Why k8s/">01 Why k8s</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/02 k8s Tools/">02 k8s Tools</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/03 Local Environment for k8s/">03 Local Environment for k8s</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/04 Verify Local Machine Setup/">04 Verify Local Machine Setup</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/05 Object Types And API Versions/">05 Object Types And API Versions</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/06 Pod Object Types/">06 Pod Object Types</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/07 Service Object Types/">07 Service Object Types</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/08 Ingress Service/">08 Ingress Service</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/09 Secret Object Types/">09 Secret Object Types</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/10 Run Containers Inside k8s/">10 Run Containers Inside k8s</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/11 k8s Development Flow/">11 k8s Development Flow</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/12 Imperative vs Declarative Deployments/">12 Imperative vs Declarative Deployments</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/13 Clear Environment/">13 Clear Environment</a>
+</li>
+            
+<li >
+    <a href="../../01 Onwards to k8s/14 k8s in Production/">14 k8s in Production</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">02 Maintain Contianers</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../01 Update Existing Objects/">01 Update Existing Objects</a>
+</li>
+            
+<li >
+    <a href="../02 Declarative Update/">02 Declarative Update</a>
+</li>
+            
+<li >
+    <a href="../03 Limitations of Updating Config Files/">03 Limitations of Updating Config Files</a>
+</li>
+            
+<li >
+    <a href="../04 Deployment Object Types/">04 Deployment Object Types</a>
+</li>
+            
+<li >
+    <a href="../05 Deployment Config File/">05 Deployment Config File</a>
+</li>
+            
+<li >
+    <a href="../06 Apply Deployment/">06 Apply Deployment</a>
+</li>
+            
+<li >
+    <a href="../07 Services Requirement/">07 Services Requirement</a>
+</li>
+            
+<li >
+    <a href="../08 Updating Deployments/">08 Updating Deployments</a>
+</li>
+            
+<li >
+    <a href="../09 Scaling Deployments/">09 Scaling Deployments</a>
+</li>
+            
+<li class="active">
+    <a href="./">10 Updating Deployment Image</a>
+</li>
+            
+<li >
+    <a href="../11 Multi Docker Access/">11 Multi Docker Access</a>
+</li>
+            
+<li >
+    <a href="../12 Requirement of Access Virtual Machine Docker Server/">12 Requirement of Access Virtual Machine Docker Server</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">03 Multi Container App</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../03 Multi Container App/- 01 Creating configurations/">  01 Creating configurations</a>
+</li>
+            
+<li >
+    <a href="../../03 Multi Container App/- 02 Applying Configurations/">  02 Applying Configurations</a>
+</li>
+            
+<li >
+    <a href="../../03 Multi Container App/01 App Architecture/">01 App Architecture</a>
+</li>
+            
+<li >
+    <a href="../../03 Multi Container App/02 Run Existing Application/">02 Run Existing Application</a>
+</li>
+            
+<li >
+    <a href="../../03 Multi Container App/03 Combining Config Files/">03 Combining Config Files</a>
+</li>
+            
+<li >
+    <a href="../../03 Multi Container App/04 Data Persistant/">04 Data Persistant</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">k8s Deployments</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../k8s Deployments/01 Deployment Process/">01 Deployment Process</a>
+</li>
+            
+<li >
+    <a href="../../k8s Deployments/02 GCP vs AWS for K8s/">02 GCP vs AWS for K8s</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">Resource</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Blogs</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Objects in K8s World</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../resource/blogs/Objects in K8s World/content/">Content</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Towards K8s</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../resource/blogs/Towards K8s/content/">Content</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Completed code</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Client</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../resource/completed-code/client/">Index</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../09 Scaling Deployments/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../11 Multi Docker Access/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/bmshamsnahid/my-k8s-study"><i class="fa fa-github"></i> GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#updating-deployment-image">Updating Deployment Image</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h3 id="updating-deployment-image">Updating Deployment Image</h3>
+<hr />
+<p>In the world of <code>k8s</code> recreate the Pods for the updated version of image is quite complex. There's a popular <a href="https://github.com/kubernetes/kubernetes/issues/33664">issue</a> in github on this topic. Traditionally we update/make change of the deployment file, we used to send the updated deployment file to the <code>master</code> using the <code>kubectl</code> command.</p>
+<p>In the deployment config file, there is no particular version of the image. So In case the image is updated in the docker hub, but the config file is not changed. <code>kubectl</code> does not change any changes in config and simply reject the file.</p>
+<p><code>k8s</code>, on our behalf does not go and check if a new version of the image is available or not.</p>
+<p>This is why this is such a big issue.</p>
+<p>With this in our mind, we can consider 3 possible issues,</p>
+<p><strong>Deleting Pod :</strong> We can simply delete the Pods. In this case, for the missing Pod, the master will create the Pods to match the desired state. So this time hopefully the latest image will be pulled in. We should get Pods with latest version of images.</p>
+<p><strong>Image Tagging :</strong> We can tag the images while building and also specify the version in the deployment config file.</p>
+<p><strong>Using Imperative Command :</strong> In this case, we will put image tag every time we build a new image. But instead of putting the image tag in the deployment config file, we will use <code>imperative command</code> to update the image version.</p>
+<p>None of these solutions are ideal. If we compare all these 3 options, we can definitely see the first one is very bad practice. Second one of <code>Image Tagging</code> is a pain for updating two config files every time. Among them <code>using imperative command</code> is comparatively much more usable.</p>
+<p>Here we will look into how can we update the deployment when a new version becomes available. We deploy the <code>deployment</code> with <code>stephengrider/multi-client</code> image, 3000 port and 1 replicas. Then we update the <code>multi-client</code> image and push the updated image to docker hub. Now ask the <code>Deployment Object</code> to recreate the Pods with the updated states.</p>
+<p>Our initial deployment config file <code>client-deployment.yaml</code> be like,</p>
+<pre><code class="yaml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: web
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: client
+          image: stephengrider/multi-client
+          ports:
+            - containerPort: 3000
+</code></pre>
+
+<p>Feed this initial state to the <code>k8s cluster</code> by,</p>
+<pre><code class="bash">kubectl apply -f client-deployment.yaml
+</code></pre>
+
+<p>We should see output <code>deployment.apps/client-deployment configured</code>.</p>
+<p>To access the site, we first get the ip of the virtual machine,</p>
+<pre><code class="bash">minikube ip
+</code></pre>
+
+<p>This should output the IP of the virtual machine.</p>
+<p>Now browse <code>http://virtual_machine_ip:31515/</code> we should see the react app is running.</p>
+<p>Now update the image. Let's say we are building new image with tag <code>v5</code>.</p>
+<p>We can use <code>imperative command</code> to update the image inside the cluster using the format,</p>
+<p><code>kubectl set image &lt;object_type&gt; / &lt;object_name&gt; &lt;container_name&gt; = &lt;new_image&gt;</code></p>
+<p>In our case, we can interpret as,</p>
+<pre><code class="bash">kubectl set image deployment/client-deployment client=stephengrider/multi-client:v5
+</code></pre>
+
+<p>Now in output, we should see <code>deployment.apps/client-deployment image updated</code>.</p>
+<p>We can see the pods,</p>
+<pre><code class="bash">kubectl get pods
+</code></pre>
+
+<p>We should notice the <code>AGE</code> of the pods is relatively small. This means without any doubt, the Pod is being recreated by the deployment.</p>
+<p>If we now browse <code>http://virtual_machine_ip:31515/</code> we should see the react app is running and the title is changed to <code>Fib Calculator version 2</code></p>
+<p>This entire process is a little bit of pain.</p>
+<ul>
+<li>We have to rebuild the image</li>
+<li>Have to put a tag to the image</li>
+<li>Run an <code>imperative</code> command to update the image</li>
+</ul>
+<p>In production, there should be a script to handle these issues automatically.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright &copy; 2021 <a href="https://shams-nahid.com/">Shams Nahid</a>.</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js" defer></script>
+        <script src="../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

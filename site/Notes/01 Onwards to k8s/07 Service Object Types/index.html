@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Shams Nahid">
+        <link rel="canonical" href="http://k8s-study.shams-nahid.com/Notes/01 Onwards to k8s/07 Service Object Types/">
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>07 Service Object Types - Advance JS Study Notes</title>
+        <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link href="../../../css/extra.css" rel="stylesheet">
+
+        <script src="../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../../..">Advance JS Study Notes</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../../..">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Notes <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">01 Onwards to k8s</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../01 Why k8s/">01 Why k8s</a>
+</li>
+            
+<li >
+    <a href="../02 k8s Tools/">02 k8s Tools</a>
+</li>
+            
+<li >
+    <a href="../03 Local Environment for k8s/">03 Local Environment for k8s</a>
+</li>
+            
+<li >
+    <a href="../04 Verify Local Machine Setup/">04 Verify Local Machine Setup</a>
+</li>
+            
+<li >
+    <a href="../05 Object Types And API Versions/">05 Object Types And API Versions</a>
+</li>
+            
+<li >
+    <a href="../06 Pod Object Types/">06 Pod Object Types</a>
+</li>
+            
+<li class="active">
+    <a href="./">07 Service Object Types</a>
+</li>
+            
+<li >
+    <a href="../08 Ingress Service/">08 Ingress Service</a>
+</li>
+            
+<li >
+    <a href="../09 Secret Object Types/">09 Secret Object Types</a>
+</li>
+            
+<li >
+    <a href="../10 Run Containers Inside k8s/">10 Run Containers Inside k8s</a>
+</li>
+            
+<li >
+    <a href="../11 k8s Development Flow/">11 k8s Development Flow</a>
+</li>
+            
+<li >
+    <a href="../12 Imperative vs Declarative Deployments/">12 Imperative vs Declarative Deployments</a>
+</li>
+            
+<li >
+    <a href="../13 Clear Environment/">13 Clear Environment</a>
+</li>
+            
+<li >
+    <a href="../14 k8s in Production/">14 k8s in Production</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">02 Maintain Contianers</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../02 Maintain Contianers/01 Update Existing Objects/">01 Update Existing Objects</a>
+</li>
+            
+<li >
+    <a href="../../02 Maintain Contianers/02 Declarative Update/">02 Declarative Update</a>
+</li>
+            
+<li >
+    <a href="../../02 Maintain Contianers/03 Limitations of Updating Config Files/">03 Limitations of Updating Config Files</a>
+</li>
+            
+<li >
+    <a href="../../02 Maintain Contianers/04 Deployment Object Types/">04 Deployment Object Types</a>
+</li>
+            
+<li >
+    <a href="../../02 Maintain Contianers/05 Deployment Config File/">05 Deployment Config File</a>
+</li>
+            
+<li >
+    <a href="../../02 Maintain Contianers/06 Apply Deployment/">06 Apply Deployment</a>
+</li>
+            
+<li >
+    <a href="../../02 Maintain Contianers/07 Services Requirement/">07 Services Requirement</a>
+</li>
+            
+<li >
+    <a href="../../02 Maintain Contianers/08 Updating Deployments/">08 Updating Deployments</a>
+</li>
+            
+<li >
+    <a href="../../02 Maintain Contianers/09 Scaling Deployments/">09 Scaling Deployments</a>
+</li>
+            
+<li >
+    <a href="../../02 Maintain Contianers/10 Updating Deployment Image/">10 Updating Deployment Image</a>
+</li>
+            
+<li >
+    <a href="../../02 Maintain Contianers/11 Multi Docker Access/">11 Multi Docker Access</a>
+</li>
+            
+<li >
+    <a href="../../02 Maintain Contianers/12 Requirement of Access Virtual Machine Docker Server/">12 Requirement of Access Virtual Machine Docker Server</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">03 Multi Container App</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../03 Multi Container App/- 01 Creating configurations/">  01 Creating configurations</a>
+</li>
+            
+<li >
+    <a href="../../03 Multi Container App/- 02 Applying Configurations/">  02 Applying Configurations</a>
+</li>
+            
+<li >
+    <a href="../../03 Multi Container App/01 App Architecture/">01 App Architecture</a>
+</li>
+            
+<li >
+    <a href="../../03 Multi Container App/02 Run Existing Application/">02 Run Existing Application</a>
+</li>
+            
+<li >
+    <a href="../../03 Multi Container App/03 Combining Config Files/">03 Combining Config Files</a>
+</li>
+            
+<li >
+    <a href="../../03 Multi Container App/04 Data Persistant/">04 Data Persistant</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">k8s Deployments</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../k8s Deployments/01 Deployment Process/">01 Deployment Process</a>
+</li>
+            
+<li >
+    <a href="../../k8s Deployments/02 GCP vs AWS for K8s/">02 GCP vs AWS for K8s</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">Resource</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Blogs</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Objects in K8s World</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../resource/blogs/Objects in K8s World/content/">Content</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Towards K8s</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../resource/blogs/Towards K8s/content/">Content</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Completed code</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Client</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../resource/completed-code/client/">Index</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../06 Pod Object Types/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../08 Ingress Service/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/bmshamsnahid/my-k8s-study"><i class="fa fa-github"></i> GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#service-object-types">Service Object Types</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h3 id="service-object-types">Service Object Types</h3>
+<hr />
+<p><code>Service</code> is all about setting up networking in the <code>k8s cluster</code>. <code>Service</code> types have 4 sub-types,</p>
+<ul>
+<li>NodePort</li>
+<li>ClusterIP</li>
+<li>LoadBalancer</li>
+<li>Ingress</li>
+</ul>
+<p>We define the sub-types under the <code>spec</code> property.</p>
+<p><u><strong>NodePort</strong></u></p>
+<p><code>NodePort</code> is supposed to expose the container to the outside world. In most cases, we use <code>NodePort</code> inside the dev stage.</p>
+<p>There's a <code>selector</code> under the <code>spec</code> also. In the <code>Service</code> config file there is no reference of the <code>Pod</code> config file. In the <code>Pod</code> config file, we have a <code>name</code> and <code>labels</code> under the <code>metadata</code>. To send traffic to the <code>Pod</code> from the <code>Service</code>, we do not see any reference of the <code>Pod</code>. Instead in <code>k8s</code>, we use the <code>label selector</code> mechanism. In the <code>Service</code> file we have a selector under <code>component: web</code>, which is same as the <code>Pod</code> file labels, <code>component: web</code>. This is how the <code>Service</code> knows the <code>Pod</code> to send traffic.</p>
+<p>After selecting the <code>Pod</code> from the <code>selector</code>, comes the ports, under the <code>spec -&gt; NodePort -&gt; ports</code> we got 3 types of ports,</p>
+<ol>
+<li><strong>ports</strong>: Internally other <code>Pod</code>/<code>object</code> connect through this port.</li>
+<li><strong>targetPort</strong>: This should be same as the <code>containerPort</code> in the <code>Pod</code> config file. This is the open port of the container inside the <code>Pod</code>.</li>
+<li><strong>nodePort</strong>: This is the port our application is exposed to the outside world. This port ranges 30000 to 32767. If we do not specify, it will generate a random port within this range.</li>
+</ol>
+<p><strong>**</strong> Diagram of port mapping of theses 3 ports by local machine, cluster, container, other objects</p>
+<p><u><strong>ClusterIP</strong></u></p>
+<p>It is a restrictive form of networking. It allows any objects inside the cluster to access the object it is pointed to. But outside ot the cluster, like from browser, it does not allow to access that object.</p>
+<p>Practically, <code>ClusterIP</code> allows anyone to access the object. Without this service, the object can not be accessed and inf we use <code>NodePort</code> service instead, it will expose the object to the outside world of the k8s cluster.</p>
+<p>It has 2 types of port,</p>
+<ol>
+<li><strong>Port</strong>: In the <code>k8s cluster</code>, other objects can connect to the clusterIp service container using this port.</li>
+<li><strong>targetPort</strong>: The <code>ClientIP Service</code> is pointing to the container with this <code>targetPort</code>.</li>
+</ol>
+<p><strong>**</strong> Diagram of port mapping of theses 3 ports by local machine, cluster, container, other objects</p>
+<p><u><strong>Load Balancer</strong></u></p>
+<p>This is an older way to handle traffic from outside to k8s cluster. With <code>Load Balance Service</code>, we replace the <code>ClusterIp Service</code> with it. And the k8s reach to the cloud provider to get there built in load balancer (For example, in AWS, it could be Classic Load Balancer or Application Load Balancer). When we use <code>Load Balancer Service</code>, it only allows the k8s cluster to expose only a set of specific Pods. The limitations are, it can not expose multiple set of pods.</p>
+<p><u><strong>Ingress Service</strong></u></p>
+<p>This Ingress service allows to come traffic inside the <code>k8s cluster</code>. When the traffic is inside the <code>k8s cluster</code>, effectively these traffic can also access the objects through ClusterIP` service.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright &copy; 2021 <a href="https://shams-nahid.com/">Shams Nahid</a>.</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js" defer></script>
+        <script src="../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

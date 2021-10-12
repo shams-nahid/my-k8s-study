@@ -5,4 +5,189 @@
      <lastmod>2021-10-12</lastmod>
      <changefreq>daily</changefreq>
     </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/01 Onwards to k8s/01 Why k8s/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/01 Onwards to k8s/02 k8s Tools/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/01 Onwards to k8s/03 Local Environment for k8s/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/01 Onwards to k8s/04 Verify Local Machine Setup/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/01 Onwards to k8s/05 Object Types And API Versions/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/01 Onwards to k8s/06 Pod Object Types/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/01 Onwards to k8s/07 Service Object Types/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/01 Onwards to k8s/08 Ingress Service/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/01 Onwards to k8s/09 Secret Object Types/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/01 Onwards to k8s/10 Run Containers Inside k8s/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/01 Onwards to k8s/11 k8s Development Flow/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/01 Onwards to k8s/12 Imperative vs Declarative Deployments/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/01 Onwards to k8s/13 Clear Environment/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/01 Onwards to k8s/14 k8s in Production/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/02 Maintain Contianers/01 Update Existing Objects/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/02 Maintain Contianers/02 Declarative Update/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/02 Maintain Contianers/03 Limitations of Updating Config Files/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/02 Maintain Contianers/04 Deployment Object Types/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/02 Maintain Contianers/05 Deployment Config File/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/02 Maintain Contianers/06 Apply Deployment/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/02 Maintain Contianers/07 Services Requirement/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/02 Maintain Contianers/08 Updating Deployments/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/02 Maintain Contianers/09 Scaling Deployments/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/02 Maintain Contianers/10 Updating Deployment Image/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/02 Maintain Contianers/11 Multi Docker Access/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/02 Maintain Contianers/12 Requirement of Access Virtual Machine Docker Server/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/03 Multi Container App/- 01 Creating configurations/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/03 Multi Container App/- 02 Applying Configurations/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/03 Multi Container App/01 App Architecture/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/03 Multi Container App/02 Run Existing Application/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/03 Multi Container App/03 Combining Config Files/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/03 Multi Container App/04 Data Persistant/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/k8s Deployments/01 Deployment Process/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/k8s Deployments/02 GCP vs AWS for K8s/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/resource/blogs/Objects in K8s World/content/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/resource/blogs/Towards K8s/content/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://k8s-study.shams-nahid.com/Notes/resource/completed-code/client/</loc>
+     <lastmod>2021-10-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
 </urlset>
